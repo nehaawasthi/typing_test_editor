@@ -1,4 +1,6 @@
-Create Type Test editor Using HTML,CSS and pure Javascript
+## Create Type Test editor Using HTML,CSS and pure Javascript
+
+
 When user pressed start button then only active the text area else disabled it and vice-versa.
 Every Time a new set of lines on top. Whenever a start button is pressed 
 Get the time and change the button text to done.
