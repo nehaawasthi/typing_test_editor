@@ -1,4 +1,4 @@
-## Create Type Test editor Using HTML,CSS and pure Javascript
+## Create Typing Test editor Using HTML,CSS and pure Javascript
 
 
 When user pressed start button then only active the text area else disabled it and vice-versa.
