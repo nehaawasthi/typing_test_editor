@@ -1,1 +1,1 @@
-# typing_test_editor
+Create Type Test editor Using HTML,CSS and pure Javascript
