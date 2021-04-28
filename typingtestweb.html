@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="typeweb.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class = "mainDiv">
+            <div class ="centerDiv">
+                <h1>Welcome To Typing Speed Test</h1>
+                <h2 id = "msg"></h2>
+                <br>
+                <textarea id ="mywords" cols ="100" rows ="10"
+                placeholder="Remember, be nice!!"></textarea>
+                <br>
+                <button id="btn" class ="mainbtn">
+                    Start
+                </button>
+            </div>
+        </div>
+
+        <script> 
+            
+            const setOfWords =["Now more than ever, many of us are conscious of how much our well-being is connected to the natural world. With less travel and limited socializing during the coronavirus pandemic, we're all seeking more of a connection with nature. Escaping to the outdoors, we're revived by the sights and soothed by the smell of flowers and trees. We're reminded that every living thing depends on another",
+            "Once upon a time, there was a beautiful forest. There lived two trees, named Chintu and Pintu, who were brothers. Chintu and Pintu had many friends like the rabbit and his brothers, the group of monkeys, the family of birds, the Bunky bear and the wise old wolf",
+            "One day, all the friends were chatting. Suddenly Pintu saw a WOODCUTTER coming toward the forest. Pintu said “Hey look a WOODCUTTER is coming towards the forest! Run! Run!”chintu said to the animals. But no one ran. They said “You give us food, shelter, you give us fresh air to breathe. How can we leave you in danger and go?” Chintu and Pintu thanked them.”OK you all hide behind us” said the two brother trees. So the monkeys and the birds hid inside the leaves of the tree and the other animals hid behind the tree.",
+            "Friendship is a relationship of mutual affection between people. It is a stronger form of interpersonal bond than an association, and has been studied in academic fields such as communication, sociology, social psychology, anthropology, and philosophy",
+            "Hello My name is Somethings and i Want to going for travelling",
+            "Amazing Work Done. Work hard and get Success"
+        ];
+
+            const msg = document.getElementById('msg');
+            const typeWords = document.getElementById('mywords');
+            const btn = document.getElementById('btn');
+            let startTime, endTime;
+
+            const playGame = ()=>{
+                let randomNumber = Math.floor(Math.random()*setOfWords.length);
+                msg.innerText = setOfWords[randomNumber];
+                let date = new Date();
+                startTime = date.getTime();
+                btn.innerText = 'Done'
+            }
+
+            const endPlay =()=>{
+                let date = new Date();
+                endTime = date.getTime();
+                let totalTime = (endTime - startTime)/1000;
+                let totalStr = typeWords.value;
+                let wordCount = wordCounter(totalStr);
+                let speed = Math.round((wordCount/totalTime)*60);
+                console.log("speed",speed)
+                let finalMsg = " Your speed of word typing is " +speed+ " words per minutes and  ";
+                finalMsg += comapreWords(msg.innerText, totalStr);
+                msg.innerText = finalMsg;
+            }
+
+            const comapreWords = (str1, str2)=>{
+                let words1 = str1.split(" ");
+                let words2 = str2.split(" ");
+                let cnt = 0;
+
+                words1.forEach(function(item, index) {
+                    if(item == words2[index]){
+                        cnt++;
+                    }
+                });
+                let errorWord = (words1.length - cnt);
+                return (cnt +  " Correct out of " +words1.length +" words and tha total number of errors are " +errorWord+ ".");
+
+            }
+
+            const wordCounter =(str)=>{
+                let response = str.split(" ").length;
+                return response;
+
+            }
+
+            btn.addEventListener('click',function(){
+                if(this.innerText=='Start'){
+                    typeWords.disabled = false;
+                    playGame();
+                }
+                else if(this.innerText == 'Done'){
+                    typeWords.disabled = true;
+                    btn.innerText ="Start";
+                    endPlay();
+                }
+            })
+            </script>
+    </body>
+</html>
